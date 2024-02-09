@@ -16,7 +16,7 @@ class HomePageController extends AbstractController
         $connectedUser = $this->getUser();
 
         if(in_array('ROLE_ADMIN', $connectedUser->getRoles())) {
-            // TODO: add redirect to admin page
+            return $this->redirectToRoute('app_admin_dashboard');
         }
 
         return $this->render('home_page/homePage.html.twig', [

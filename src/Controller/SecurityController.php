@@ -22,7 +22,7 @@ class SecurityController extends AbstractController
 
         if ($connectedUser) {
             if(in_array('ROLE_ADMIN', $connectedUser->getRoles())) {
-                // TODO: add redirect to admin page
+                return $this->redirectToRoute('app_admin_dashboard');
             } else {
                 return $this->redirectToRoute('app_home_page');
             }
