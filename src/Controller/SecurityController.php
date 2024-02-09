@@ -9,12 +9,24 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+    #[Route(path: '/', name: 'index')]
+    public function redirectToDefault()
+    {
+        return $this->redirectToRoute('app_login');
+    }
+
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        $connectedUser = $this->getUser();
+
+        if ($connectedUser) {
+            if(in_array('ROLE_ADMIN', $connectedUser->getRoles())) {
+                // TODO: add redirect to admin page
+            } else {
+                return $this->redirectToRoute('app_home_page');
+            }
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();

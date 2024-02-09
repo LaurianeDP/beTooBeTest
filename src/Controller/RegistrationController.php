@@ -34,6 +34,7 @@ class RegistrationController extends AbstractController
             if($form->get('admin')->getData()) {
                 $userRoles = $user->getRoles();
                 $userRoles[]= 'ROLE_ADMIN';
+                $user->setRoles($userRoles);
 
                 // If user is an admin their account is automatically active
                 $user->setAccountActive(true);
@@ -42,7 +43,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_home_page');
         }
 
         return $this->render('registration/register.html.twig', [
