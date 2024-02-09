@@ -29,7 +29,7 @@
         <ul>
             {% for activity in user.activities %}
 
-                <li>{{activity.name}}</li>
+                {{ component('ActivityCard', { activityComp: activity, user: user}) }}
 
             {% endfor %}
         </ul>

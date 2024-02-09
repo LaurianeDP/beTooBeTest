@@ -1,0 +1,11 @@
+<div{{ attributes }}>
+    {% if displayActivity %}
+        <li>
+            <h3>{{activityComp.name}}</h3>
+            <div>
+                Début : {{activityComp.startDate|date("d/m/Y")}} Fin : {{activityComp.endDate|date("d/m/Y")}}
+            </div>
+            <button data-action="live#action" data-action-name="leaveActivity(activityId={{activityComp.id}})">Me désinscrire</button>
+        </li>
+    {% endif %}
+</div>

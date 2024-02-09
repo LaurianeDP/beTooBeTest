@@ -1,10 +1,10 @@
 <div{{ attributes }}>
     {% if displayUser %}
-        <div>
+        <li>
             <h3>{{userComp.firstname}} {{userComp.lastname}}</h3>
             <p>{{userComp.email}}</p>
             <p>{{userComp.dateOfBirth|date("d/m/Y")}}</p>
             <button data-action="live#action" data-action-name="activateUser(userId={{userComp.id}})">Activer le compte</button>
-        </div>
+        </li>
     {% endif %}
 </div>
