@@ -6,6 +6,14 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .button {
+            border-radius: 0.5rem;
+            border: 1px gray solid;
+            padding: 0.3rem;
+            margin-right: 0.2rem;
+            text-decoration: none;
+            color: black;
+        }
 </style>
 
 <div class="example-wrapper">
@@ -14,6 +22,23 @@
     {% if user.accountActive %}
 
         <h2>Vos activités</h2>
+
+        {% if usersToValidate|length > 0 %}
+
+        <ul>
+            {% for activity in user.activities %}
+
+                <li>{{activity.name}}</li>
+
+            {% endfor %}
+        </ul>
+
+        {% else %}
+            <p>Vous n'êtes inscrit(e) à aucune activité pour le moment...</p>
+
+            <a class="button"  href="{{path('app_activities')}}">M'inscrire à une activité</a>
+
+        {% endif %}
 
     {% else %}
         <p>Votre compte n'a pas encore été activé par un administrateur...</p>
