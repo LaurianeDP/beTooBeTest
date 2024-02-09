@@ -4,4 +4,8 @@ Uses Symfony 6.4.
 
 Missing requirements:
 
-CSS is basic, all missing functionalities are marked as TODO in code.
+CSS is basic.
+No PHPUnit tests written.
+All code related to activities is untested, fixtures need to be added to test that the frontend is working as expected.
+
+Missing functionalities are marked as TODO in code.
