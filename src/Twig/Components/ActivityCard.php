@@ -19,6 +19,9 @@ final class ActivityCard
     public User $user;
     public $displayActivity = true;
 
+    // TODO: add conditional display attribute if the user is on the Home or Activities page
+    // Use current active route to figure this out
+
     public function __construct(private ActivityService $activityService)
     {}
 

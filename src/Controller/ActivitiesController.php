@@ -17,11 +17,10 @@ class ActivitiesController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
 
-        // TODO: add call to activityService to get a valid activities list for the connected user
-        // $validUserActivities = $this->activityService->getValidUserActivities($this->getUser());
+        $validUserActivities = $this->activityService->getValidUserActivities($this->getUser());
 
         return $this->render('activities/userActivities.html.twig', [
-            // 'userActivities' => $validUserActivities,
+            'userActivities' => $validUserActivities
         ]);
     }
 }

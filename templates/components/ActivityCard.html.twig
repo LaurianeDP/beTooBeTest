@@ -5,6 +5,7 @@
             <div>
                 Début : {{activityComp.startDate|date("d/m/Y")}} Fin : {{activityComp.endDate|date("d/m/Y")}}
             </div>
+            <!-- TODO: add conditional display if the card is displayed in user Home or Activities page (sign-up/leave activity) -->
             <button data-action="live#action" data-action-name="leaveActivity(activityId={{activityComp.id}})">Me désinscrire</button>
         </li>
     {% endif %}

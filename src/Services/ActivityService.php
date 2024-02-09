@@ -17,16 +17,30 @@ class ActivityService
         $validUserActivities = [];
         $connectedUser = $user->getId();
 
-        // TODO: filter activities where: the user is not already signed up, the user meets the age requirement
+        // Filters activities where:
+        // the user is not already signed up, the user meets the age requirement, and the activity has not reached its maximum amount of participants
 
-        return $validUserActivities;
+        // TODO: add logic to calculate user age using a DateTime library, for example Carbon
+        $userAge = 10;
+
+        $qb = $this->createQueryBuilder('activity')
+                ->where('activity.ageRequirement <= :userAge')
+                ->andWhere(':user NOT IN activity.participants')
+                // Syntax is false, placeholder to show the logic to be used
+                ->andWhere('COUNT(participant.id) < activity.maximumParticipants')
+                ->setParameter('user', $connectedUser)
+                ->setParameter('userAge', $userAge)
+            ;
+
+
+        return $qb->getQuery()->getResult();
     }
 
     public function unsignUserFromActivity(User $user, string $activityId): void {
         $activitySelected = $this->activityRepository->find($activityId);
 
         $activitySelected->removeParticipant($user);
-        
+
         $this->entityManager->persist($activitySelected);
         $this->entityManager->flush();
     }

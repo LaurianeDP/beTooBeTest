@@ -20,6 +20,8 @@ class AdminDashboardController extends AbstractController
     {
         $unvalidatedUsers= $this->userRepository->findBy(['accountActive' => false]);
 
+        // TODO: add the list of activities to be displayed on admin page
+
         return $this->render('admin_dashboard/adminDashboard.html.twig', [
             'usersToValidate' => $unvalidatedUsers,
         ]);
