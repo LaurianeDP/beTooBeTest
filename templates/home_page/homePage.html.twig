@@ -13,6 +13,7 @@
             margin-right: 0.2rem;
             text-decoration: none;
             color: black;
+            background-color: whitesmoke;
         }
 </style>
 
@@ -23,7 +24,7 @@
 
         <h2>Vos activités</h2>
 
-        {% if usersToValidate|length > 0 %}
+        {% if user.activities|length > 0 %}
 
         <ul>
             {% for activity in user.activities %}
@@ -35,10 +36,9 @@
 
         {% else %}
             <p>Vous n'êtes inscrit(e) à aucune activité pour le moment...</p>
-
-            <a class="button"  href="{{path('app_activities')}}">M'inscrire à une activité</a>
-
         {% endif %}
+
+        <a class="button"  href="{{path('app_activities')}}">M'inscrire à une activité</a>
 
     {% else %}
         <p>Votre compte n'a pas encore été activé par un administrateur...</p>

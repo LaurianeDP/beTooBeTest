@@ -17,7 +17,7 @@
         <ul>
             {% for user in usersToValidate %}
 
-                <li>{{user.email}}</li>
+                {{ component('UserCard', { userComp: user}) }}
 
             {% endfor %}
         </ul>
